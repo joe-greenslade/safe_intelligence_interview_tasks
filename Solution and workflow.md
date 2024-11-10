@@ -45,7 +45,19 @@ Training samples: 8000
 Test samples: 2000
 Final accuracy: 3.83%
 ```
-I don't believe this to be the final solution due to the average loss not being a number
+I don't believe this to be the final solution due to the average loss not being a number.
+
+* I have tweaked the learning rate to `0.0001` and now achieve this output:
+```
+Epoch 1 average loss: 0.4588
+...
+Epoch 2 average loss: 0.0349
+...
+Training samples: 8000
+Test samples: 2000
+Final accuracy: 96.17%
+```
+My Conclusion: The learning rate was too high/large, preventing any actual meaningful gradient descent occuring
 
 
 ## Task 3:
