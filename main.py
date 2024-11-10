@@ -22,7 +22,6 @@ if __name__ == "__main__":
         dataset, batch_size=32, shuffle=True, num_workers=2, drop_last=True
     )
 
-    exit(0)
 
     ###########################################################################
     # Split data into training and test sets
@@ -41,10 +40,7 @@ if __name__ == "__main__":
     ###########################################################################
 
     network = SimpleNeuralNetwork(
-        batch_size=32,
-        input_dim=3,
-        hidden_sizes=[4, 4],
-        output_size=1
+        input_dim=3, hidden_sizes=[4, 4], output_size=1
     )
 
     network.train(train_dataloader, epochs=2, batch_size=32, learning_rate=0.01)
@@ -58,6 +54,7 @@ if __name__ == "__main__":
     print(f"Training samples: {len(train_dataset)}")
     print(f"Test samples: {len(test_dataset)}")
     print(f'Final accuracy: {final_accuracy:.2f}%')
+    exit(0)
 
     ###########################################################################
     # Bound propagation
