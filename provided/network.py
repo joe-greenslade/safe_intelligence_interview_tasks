@@ -156,15 +156,25 @@ class SimpleNeuralNetwork:
 
         ########### YOUR CODE HERE ############
 
-        pass
+        dW3 = torch.matmul(self.Z2.T, dZ3)
+        db3 = torch.sum(dZ3, axis=0, keepdim=True)
+
+        dZ2 = torch.matmul(self.W3.T, dZ3)
+        dW2 = torch.matmul(self.Z1.T, dZ2)
+        db2 = torch.sum(dZ2, axis=0, keepdim=True)
+
+        dW1 = torch.matmul(self.X.T, dZ1)
+        dZ1 = torch.matmul(dZ2, self.W2.T)
+        db1 = torch.sum(dZ1, axis=0, keepdim=True)
 
         # Update weights and biases
-        self.W3 -= 0
-        self.b3 -= 0
-        self.W2 -= 0
-        self.b2 -= 0
-        self.W1 -= 0
-        self.b1 -= 0
+        self.W3 -= learning_rate * dW3
+        self.b3 -= learning_rate * db3
+        self.W2 -= learning_rate * dW2
+        self.b2 -= learning_rate * db2
+        self.W1 -= learning_rate * dW1
+        self.b1 -= learning_rate * db1
 
         ########### END YOUR CODE  ############
 
+        return dW1, dZ1, dZ2, dZ3
