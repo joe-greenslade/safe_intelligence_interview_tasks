@@ -1,7 +1,7 @@
 import  torch
 from torch.utils.data import DataLoader, random_split
 from provided.network import SimpleNeuralNetwork
-from provided.loader import MultiProcessDataset
+from provided.loader import MultiProcessDataset, SingleProcessDataset
 from provided.bounds import IntervalBoundPropagation
 
 from provided.constants import DATA_DIR
@@ -10,14 +10,19 @@ from provided.constants import DATA_DIR
 if __name__ == "__main__":
 
     print("Running main.py...")
-    exit(0)
 
     ###########################################################################
     # Load data
     ###########################################################################
 
-    dataset = MultiProcessDataset(DATA_DIR / '3d_data.csv')
-    dataloader = DataLoader(dataset, batch_size=32, shuffle=True, num_workers=2, drop_last=True)
+    dataset = SingleProcessDataset(DATA_DIR / "3d_data.csv")
+
+    dataset = MultiProcessDataset(DATA_DIR / "3d_data.csv")
+    dataloader = DataLoader(
+        dataset, batch_size=32, shuffle=True, num_workers=2, drop_last=True
+    )
+
+    exit(0)
 
     ###########################################################################
     # Split data into training and test sets
