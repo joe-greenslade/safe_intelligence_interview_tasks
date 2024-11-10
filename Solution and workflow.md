@@ -35,5 +35,17 @@ for this line:
 dZ2 = torch.matmul(self.W3.T, dZ3)
 ```
 
+* A soultion has been found after playing around and tweaking matrix shapes for multiplication. However, for both Epoch's the average loss is nan and the final accurracy is 3.83%:
+```
+Epoch 1 average loss: nan
+...
+Epoch 2 average loss: nan
+...
+Training samples: 8000
+Test samples: 2000
+Final accuracy: 3.83%
+```
+I don't believe this to be the final solution due to the average loss not being a number
+
 
 ## Task 3:

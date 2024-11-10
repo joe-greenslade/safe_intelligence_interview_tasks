@@ -155,16 +155,15 @@ class SimpleNeuralNetwork:
         dZ3 = self.output - Y  # (batch_size, output_size)
 
         ########### YOUR CODE HERE ############
-
-        dW3 = torch.matmul(self.Z2.T, dZ3)
+        dW3 = torch.matmul(dZ3.T, self.Z2)
         db3 = torch.sum(dZ3, axis=0, keepdim=True)
 
-        dZ2 = torch.matmul(self.W3.T, dZ3)
-        dW2 = torch.matmul(self.Z1.T, dZ2)
+        dZ2 = torch.matmul(dZ3, self.W3)
+        dW2 = torch.matmul(dZ2.T, self.Z1)
         db2 = torch.sum(dZ2, axis=0, keepdim=True)
 
-        dW1 = torch.matmul(self.X.T, dZ1)
-        dZ1 = torch.matmul(dZ2, self.W2.T)
+        dZ1 = torch.matmul(dZ2, self.W2)
+        dW1 = torch.matmul(dZ1.T, self.X)
         db1 = torch.sum(dZ1, axis=0, keepdim=True)
 
         # Update weights and biases
