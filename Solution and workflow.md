@@ -61,3 +61,5 @@ My Conclusion: The learning rate was too high/large, preventing any actual meani
 
 
 ## Task 3:
+* Unattempted witin time constraints of the technical as current time is 70 mins, will need more time to research `IntervalBoundPropagation` and come up with a solution.
+* Will hopefully have a solution by the next interview
