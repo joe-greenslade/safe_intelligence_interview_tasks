@@ -71,9 +71,19 @@ class IntervalBoundPropagation:
         )
 
         ########### YOUR CODE HERE ############
+        x_min = input_bounds[:, :, 0]
+        x_max = input_bounds[:, :, 1]
 
-        pass
-        
+        W_plus = torch.clamp(weights, min=0)
+        W_minus = torch.clamp(weights, max=0)
+
+        W_plus_T = W_plus.transpose(0, 1)
+        W_minus_T = W_minus.transpose(0, 1)
+
+        output_min = x_min @ W_plus_T + x_max @ W_minus_T + bias
+        output_max = x_max @ W_plus_T + x_min @ W_minus_T + bias
+
+        bounds_out = torch.stack([output_min, output_max], dim=2)
         ########### END YOUR CODE  ############
 
         return bounds_out
